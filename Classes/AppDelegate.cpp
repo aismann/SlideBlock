@@ -72,12 +72,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
   glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::EXACT_FIT);
   register_all_packages();
   
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   auto scene = HomeScene::createHomeScene();
-  #endif
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#endif
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
   auto scene = AndroidScene::CreateScene();
-  #endif
+#endif
   // run
   director->runWithScene(scene);
   

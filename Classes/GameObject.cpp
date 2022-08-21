@@ -8,7 +8,6 @@
 
 #include "GameObject.h"
 #include "GameDefine.h"
-#define TIME_RUNACTION 0.05
 
 GameObject::GameObject() {}
 
@@ -22,7 +21,7 @@ void GameObject::setHeadAndLastMatrix(const Vec2& headMatrix, const Vec2& lastMa
   } else {
     this->typeDirection = HORIZONTAL;
   }
-  lengthObject = lastMatrix.x  - headMatrix.x;
+  lengthObject = lastMatrix.x - headMatrix.x;
   heightObject = lastMatrix.y - headMatrix.y;
 }
 
@@ -32,8 +31,8 @@ void GameObject::setPositionObject(const Vec2& pos) {
 }
 
 void GameObject::runActionGameWin(const Vec2& pos) {
-  auto action1 = MoveTo::create(TIME_RUNACTION*2.0, pos);
-  this->runAction(Sequence::create(action1, NULL));
+  auto moveAction = MoveTo::create(0.12, pos);
+  this->runAction(Sequence::create(moveAction, NULL));
 }
 
 void GameObject::createWithFileName(const char* fileName) {

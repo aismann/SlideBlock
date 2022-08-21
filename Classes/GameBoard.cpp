@@ -10,10 +10,7 @@
 #include "GameBoard.h"
 #include "GameDefine.h"
 #include "GameObject.h"
-
 #include <iostream>
-
-#define SHAPE_WIDTH_HEIGHT 80
 
 GameBoard::GameBoard(int modeGame) {
   if(!arrayObject.empty()) {
@@ -173,20 +170,20 @@ bool GameBoard::checkGameObjectCanMove(GameObject* gameObject, const Vec2& posit
     if(floatDistanceX > 0.0) {
       int toXIndex = fmin(gameObject->getLastMatrix().x + nextMoveX - 1, MAX_COLUMN_ROW_GAMEBOARD - 1);
       Vec2 result = this->getMaxMatrixCanMoveX(gameObject->getLastMatrix().x - 1,
-                                        toXIndex,
-                                        gameObject->getHeadMatrix().y);
+                                               toXIndex,
+                                               gameObject->getHeadMatrix().y);
       if (result.x == INVALID_MATRIX_VALUE) { return false;}
-      CCLOG("RIGHT toXIndex : %d",toXIndex);
-      CCLOG("RIGHT result.x: %f",result.x);
+      //      CCLOG("RIGHT toXIndex : %d",toXIndex);
+      //      CCLOG("RIGHT result.x: %f",result.x);
       return result.x >= toXIndex;
     } else {
       int toXIndex = fmax(gameObject->getHeadMatrix().x - nextMoveX, 0);
       Vec2 result = this->getMaxMatrixCanMoveX(gameObject->getHeadMatrix().x,
-                                        toXIndex,
-                                        gameObject->getHeadMatrix().y);
+                                               toXIndex,
+                                               gameObject->getHeadMatrix().y);
       if (result.x == INVALID_MATRIX_VALUE) { return false;}
-      CCLOG("LEFT toXIndex : %d",toXIndex);
-      CCLOG("LEFT result.x: %f",result.x);
+      //      CCLOG("LEFT toXIndex : %d",toXIndex);
+      //      CCLOG("LEFT result.x: %f",result.x);
       return result.x <= toXIndex;
     }
   } else {
@@ -195,11 +192,11 @@ bool GameBoard::checkGameObjectCanMove(GameObject* gameObject, const Vec2& posit
     if(floatDistanceY > 0.0) {
       int toYIndex = fmin(gameObject->getLastMatrix().y + nextMoveY - 1, MAX_COLUMN_ROW_GAMEBOARD - 1);
       Vec2 result = this->getMaxMatrixCanMoveY(gameObject->getLastMatrix().y - 1,
-                                        toYIndex,
-                                        gameObject->getHeadMatrix().x);
+                                               toYIndex,
+                                               gameObject->getHeadMatrix().x);
       if (result.y == INVALID_MATRIX_VALUE) { return false;}
-      CCLOG("UP toYIndex : %d",toYIndex);
-      CCLOG("UP result.y: %f",result.y);
+      //      CCLOG("UP toYIndex : %d",toYIndex);
+      //      CCLOG("UP result.y: %f",result.y);
       return result.y >= toYIndex;
     } else {
       int toYIndex = fmax(gameObject->getHeadMatrix().y - nextMoveY, 0);
@@ -207,8 +204,8 @@ bool GameBoard::checkGameObjectCanMove(GameObject* gameObject, const Vec2& posit
                                                toYIndex,
                                                gameObject->getHeadMatrix().x);
       if (result.y == INVALID_MATRIX_VALUE) { return false;}
-      CCLOG("DOWN toYIndex : %d",toYIndex);
-      CCLOG("DOWN result.y: %f",result.y);
+      //      CCLOG("DOWN toYIndex : %d",toYIndex);
+      //      CCLOG("DOWN result.y: %f",result.y);
       return result.y <= toYIndex;
     }
   }
@@ -218,8 +215,8 @@ bool GameBoard::checkGameObjectCanMove(GameObject* gameObject, const Vec2& posit
 /// Get maxY if move to right
 /// if nextX = INVALID_MATRIX_VALUE ---> can't move
 Vec2 GameBoard::getMaxMatrixCanMoveX(int fromXIndex, int toXIndex, int y) {
-//  CCLOG("fromXIndex : %d",fromXIndex);
-//  CCLOG("toXIndex : %d",toXIndex);
+  //  CCLOG("fromXIndex : %d",fromXIndex);
+  //  CCLOG("toXIndex : %d",toXIndex);
   int nextX = INVALID_MATRIX_VALUE;
   if(fromXIndex < toXIndex) {
     for(int i = fromXIndex + 1; i <= toXIndex; i++) {
@@ -247,8 +244,8 @@ Vec2 GameBoard::getMaxMatrixCanMoveX(int fromXIndex, int toXIndex, int y) {
 /// Get maxY if move to up
 /// if nextY = INVALID_MATRIX_VALUE ---> can't move
 Vec2 GameBoard::getMaxMatrixCanMoveY(int fromYIndex, int toYIndex, int x) {
-//  CCLOG("fromYIndex : %d",fromYIndex);
-//  CCLOG("toYIndex : %d",toYIndex);
+  //  CCLOG("fromYIndex : %d",fromYIndex);
+  //  CCLOG("toYIndex : %d",toYIndex);
   int nextY = INVALID_MATRIX_VALUE;
   if(fromYIndex < toYIndex) {
     for(int i = fromYIndex + 1; i <= toYIndex; i++) {
@@ -285,30 +282,22 @@ bool GameBoard::checkWinGame() {
     GameObject* touchObject = arrayObject.at(i);
     if(touchObject != NULL && touchObject->getTypeObject() == WIN_OBJECT) {
       Vec2 winGameBoardMatrix = getGameBoardWinMatrixValue();
-      Vec2 headMatrix = touchObject->getHeadMatrix();
       Vec2 lastMatrix = touchObject->getLastMatrix();
+      
       if(touchObject->getTypeDirection() == HORIZONTAL) {
-        if(headMatrix.x == winGameBoardMatrix.x ||
-           lastMatrix.x == winGameBoardMatrix.x) {
-          this->unschedule("updateWinHorizontal");
-          this->scheduleOnce([=](float dt) {
-            touchObject->runActionGameWin(Vec2(touchObject->getPosition().x + SHAPE_WIDTH_HEIGHT*4, touchObject->getPosition().y));
-            if(delegate) {
-              delegate->sendNotificationForGameScene();
-            }
-          }, 0.06f, "updateWinHorizontal");
+        if(lastMatrix.x == winGameBoardMatrix.x) {
+          touchObject->runActionGameWin(Vec2(touchObject->getPosition().x + WIDTH_HEIGHT_OBJECT_PIXEL*4, touchObject->getPosition().y));
+          if(delegate) {
+            delegate->sendNotificationForGameScene();
+          }
           return true;
         }
       } else {
-        if( headMatrix.y == winGameBoardMatrix.y ||
-           lastMatrix.y == winGameBoardMatrix.y) {
-          this->unschedule("updateWinVertical");
-          this->scheduleOnce([=](float dt) {
-            touchObject->runActionGameWin(Vec2(touchObject->getPosition().x, touchObject->getPosition().y + SHAPE_WIDTH_HEIGHT*4));
-            if(delegate) {
-              delegate->sendNotificationForGameScene();
-            }
-          }, 0.06f, "updateWinVertical");
+        if(lastMatrix.y == winGameBoardMatrix.y) {
+          touchObject->runActionGameWin(Vec2(touchObject->getPosition().x, touchObject->getPosition().y + WIDTH_HEIGHT_OBJECT_PIXEL*4));
+          if(delegate) {
+            delegate->sendNotificationForGameScene();
+          }
           return true;
         }
       }
