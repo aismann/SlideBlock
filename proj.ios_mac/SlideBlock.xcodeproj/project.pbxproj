@@ -504,10 +504,10 @@
 		867B7C9228B3C5B200C63AD5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				867B7C9328B3C5B200C63AD5 /* RootViewController.mm */,
 				867B7C9428B3C5B200C63AD5 /* AppController.h */,
-				867B7C9528B3C5B200C63AD5 /* RootViewController.h */,
 				867B7C9628B3C5B200C63AD5 /* AppController.mm */,
+				867B7C9328B3C5B200C63AD5 /* RootViewController.mm */,
+				867B7C9528B3C5B200C63AD5 /* RootViewController.h */,
 				867B7CCC28B3C86400C63AD5 /* AdmobIOSWrapper.h */,
 				867B7CCD28B3C89700C63AD5 /* AdmobIOSWrapper.m */,
 				867B7CD328B3CB9000C63AD5 /* AdmobIOS.h */,
