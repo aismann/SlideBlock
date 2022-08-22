@@ -12,6 +12,7 @@
 #include "ModeGameScene.h"
 #include "SimpleAudioEngine.h"
 #include "HomeScene.h"
+#include "AdmobManager.h"
 
 LevelScene::LevelScene() {}
 
@@ -28,6 +29,8 @@ Scene* LevelScene::createLevelGameScene(int typeLevel, int director) {
 }
 
 void LevelScene::initUI() {
+  AdmobManager::getInstance()->hideBanner();
+  
   CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
   
   int adLevel = UserDefault::getInstance()->getIntegerForKey("ADFULLLEVEL", 1);

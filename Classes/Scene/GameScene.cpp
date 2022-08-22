@@ -181,7 +181,10 @@ void GameScene::createFooterGame() {
   ui::Button* btnBackGame = ui::Button::create("backscene_normal.png",
                                                "backscene_pressed.png","",
                                                ui::Widget::TextureResType::LOCAL);
-  btnBackGame->setPosition(Vec2(btnBackGame->getContentSize().height/2,btnBackGame->getContentSize().height/2));
+  
+  ///Noted: because Admod height = 32px  ===> btnBackGame will be move to 40.0
+  btnBackGame->setPosition(Vec2(btnBackGame->getContentSize().height/2,
+                                btnBackGame->getContentSize().height/2 + 40.0));
   btnBackGame->setTag(TAG_BTN_BACK_GAMESCENE);
   btnBackGame->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   this->addChild(btnBackGame,100);
@@ -212,7 +215,7 @@ void GameScene::createFooterGame() {
   }
   
   /*Button Back Slot*/
-  btnBackSlot->setPosition(Vec2(winSize.width/2 - btnBackSlot->getContentSize().width*0.6,btnBackGame->getPositionY()));
+  btnBackSlot->setPosition(Vec2(winSize.width/2 - btnBackSlot->getContentSize().width*0.6, btnBackGame->getPositionY()));
   btnBackSlot->setTag(TAG_BTN_BACKSLOT_GAMESCENE);
   btnBackSlot->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   this->addChild(btnBackSlot,100);
@@ -225,7 +228,7 @@ void GameScene::createFooterGame() {
   
   ui::Button* btnSuggestGame = ui::Button::create("goiy_normal.png","goiy_pressed.png","",ui::Widget::TextureResType::LOCAL);
   btnSuggestGame->setTag(TAG_BTN_SUGGEST_GAME);
-  btnSuggestGame->setPosition(Vec2(winSize.width - btnSuggestGame->getContentSize().width/2, btnNextSlot->getPositionY()));
+  btnSuggestGame->setPosition(Vec2(winSize.width - btnSuggestGame->getContentSize().width/2, btnBackGame->getPositionY()));
   btnSuggestGame->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   btnSuggestGame->setVisible(false);
   this->addChild(btnSuggestGame,100);

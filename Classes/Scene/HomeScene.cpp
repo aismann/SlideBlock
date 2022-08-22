@@ -13,6 +13,7 @@
 #include "ModeGameScene.h"
 #include "GameDefine.h"
 #include "SimpleAudioEngine.h"
+#include "AdmobManager.h"
 
 HomeScene::HomeScene() {}
 
@@ -29,6 +30,7 @@ bool HomeScene::init() {
   if(!Layer::init()) {
     return false;
   }
+  AdmobManager::getInstance()->hideBanner();
   winsize = Director::getInstance()->getWinSize();
   if( UserDefault::getInstance()->getBoolForKey("ONTHEME", true)) {
     Sprite* spBg = Sprite::create("bgHomeScene.png");
