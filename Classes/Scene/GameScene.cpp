@@ -11,6 +11,7 @@
 #include "LevelGame.h"
 #include "HomeScene.h"
 #include "SimpleAudioEngine.h"
+#include "AdmobManager.h"
 
 static char bufferLevel[128] = {0};
 static char bufferCountMove[128] = {0};
@@ -102,6 +103,8 @@ void GameScene::initUpdateUI() {
   lister->onTouchEnded = CC_CALLBACK_2(GameScene::handleTouchEnd, this);
   Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(lister, this);
   this->scheduleUpdate();
+  
+  AdmobManager::getInstance()->showBanner(AdmobPosition::BottomCenter);
 }
 
 void GameScene::createHeaderGame() {
@@ -429,7 +432,7 @@ void GameScene::handleTouchEnd(Touch* mTouch, Event* pEvent) {
   
   /// Check game win
   gameBoard->checkWinGame();
-  gameBoard->printGameBoard();
+//  gameBoard->printGameBoard();
   
   touchObject = NULL;
   previousHeadMatrix = Vec2(-1, -1);

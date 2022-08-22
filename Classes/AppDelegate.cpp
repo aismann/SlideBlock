@@ -3,6 +3,7 @@
 #include "AndroidScene.h"
 #include "GameDefine.h"
 #include "SimpleAudioEngine.h"
+#include "AdmobManager.h"
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(640, 960);
@@ -78,6 +79,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
   auto scene = AndroidScene::CreateScene();
 #endif
+  
+  AdmobManager::getInstance()->init("ca-app-pub-2381211844174227/8228738299",
+                                    "ca-app-pub-2381211844174227/6468934067");
+  
   // run
   director->runWithScene(scene);
   
