@@ -55,9 +55,6 @@ void GameScene::update(float dt) {
 }
 
 void GameScene::initUpdateUI() {
-  if(UserDefault::getInstance()->getBoolForKey("ONMUSIC", true)) {
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgsound.mp3", true);
-  }
   winSize = Director::getInstance()->getWinSize();
   if(UserDefault::getInstance()->getBoolForKey("ONTHEME", true)) {
     Sprite* spBg = Sprite::create("bgHomeScene.png");
@@ -261,15 +258,9 @@ void GameScene::buttonClickGameScene(Ref* pSender) {
     Director::getInstance()->replaceScene(HomeScene::createHomeScene());
   }
   if(tag == TAG_POPUP_REPLAY) {
-    if(UserDefault::getInstance()->getBoolForKey("ONMUSIC", true)) {
-      CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgsound.mp3", true);
-    }
     Director::getInstance()->replaceScene(GameScene::createGameScene(level, styleGame));
   }
   if(tag == TAG_POPUP_RESUME) {
-    if(UserDefault::getInstance()->getBoolForKey("ONMUSIC", true)) {
-      CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("bgsound.mp3", true);
-    }
     status = RUNNING;
     if(this->getChildByTag(1256)) {
       this->removeChildByTag(1256);
