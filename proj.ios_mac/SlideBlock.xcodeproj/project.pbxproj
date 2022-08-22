@@ -58,6 +58,8 @@
 		867B7CB928B3C68300C63AD5 /* SettingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 867B7CAC28B3C68200C63AD5 /* SettingScene.cpp */; };
 		867B7CBA28B3C68300C63AD5 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 867B7CAE28B3C68200C63AD5 /* GameScene.cpp */; };
 		867B7CBB28B3C68300C63AD5 /* ModeGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 867B7CB028B3C68200C63AD5 /* ModeGameScene.cpp */; };
+		867B7CC928B3C7F500C63AD5 /* AdmobManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 867B7CC828B3C7F500C63AD5 /* AdmobManager.cpp */; };
+		867B7CCE28B3C89700C63AD5 /* AdmobIOSWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 867B7CCD28B3C89700C63AD5 /* AdmobIOSWrapper.m */; };
 		B77175921DFC1A8C00410C8D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B77175911DFC1A8C00410C8D /* logo.png */; };
 		B77175981DFC49E000410C8D /* imageHomeScene in Resources */ = {isa = PBXBuildFile; fileRef = B77175971DFC49E000410C8D /* imageHomeScene */; };
 		B7F5F9881DFC4A360044E678 /* imageLevelScene in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F9871DFC4A360044E678 /* imageLevelScene */; };
@@ -219,6 +221,10 @@
 		867B7CAE28B3C68200C63AD5 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		867B7CAF28B3C68200C63AD5 /* HelpScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpScene.h; sourceTree = "<group>"; };
 		867B7CB028B3C68200C63AD5 /* ModeGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModeGameScene.cpp; sourceTree = "<group>"; };
+		867B7CC728B3C7F500C63AD5 /* AdmobManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdmobManager.h; sourceTree = "<group>"; };
+		867B7CC828B3C7F500C63AD5 /* AdmobManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdmobManager.cpp; sourceTree = "<group>"; };
+		867B7CCC28B3C86400C63AD5 /* AdmobIOSWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdmobIOSWrapper.h; sourceTree = "<group>"; };
+		867B7CCD28B3C89700C63AD5 /* AdmobIOSWrapper.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AdmobIOSWrapper.m; sourceTree = "<group>"; };
 		B75930B81DECE5D70094B2F9 /* GameDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDefine.h; sourceTree = "<group>"; };
 		B77175911DFC1A8C00410C8D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		B77175971DFC49E000410C8D /* imageHomeScene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = imageHomeScene; sourceTree = "<group>"; };
@@ -461,6 +467,8 @@
 				867B7C9428B3C5B200C63AD5 /* AppController.h */,
 				867B7C9528B3C5B200C63AD5 /* RootViewController.h */,
 				867B7C9628B3C5B200C63AD5 /* AppController.mm */,
+				867B7CCC28B3C86400C63AD5 /* AdmobIOSWrapper.h */,
+				867B7CCD28B3C89700C63AD5 /* AdmobIOSWrapper.m */,
 			);
 			name = Classes;
 			path = ios/Classes;
@@ -505,6 +513,8 @@
 		867B7CBC28B3C6BC00C63AD5 /* Admod */ = {
 			isa = PBXGroup;
 			children = (
+				867B7CC728B3C7F500C63AD5 /* AdmobManager.h */,
+				867B7CC828B3C7F500C63AD5 /* AdmobManager.cpp */,
 			);
 			path = Admod;
 			sourceTree = "<group>";
@@ -661,8 +671,10 @@
 				867B7CB728B3C68300C63AD5 /* HelpScene.cpp in Sources */,
 				867B7CB628B3C68300C63AD5 /* HomeScene.cpp in Sources */,
 				867B7CB928B3C68300C63AD5 /* SettingScene.cpp in Sources */,
+				867B7CCE28B3C89700C63AD5 /* AdmobIOSWrapper.m in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				867B7C9828B3C5B200C63AD5 /* AppController.mm in Sources */,
+				867B7CC928B3C7F500C63AD5 /* AdmobManager.cpp in Sources */,
 				867B7CB328B3C68300C63AD5 /* LevelGame.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
