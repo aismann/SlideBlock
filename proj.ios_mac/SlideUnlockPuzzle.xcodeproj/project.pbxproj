@@ -74,6 +74,7 @@
 		867B7CEF28B3CD5A00C63AD5 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867B7CE428B3CD5A00C63AD5 /* GoogleUtilities.xcframework */; };
 		867B7CF128B3CDE600C63AD5 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867B7CF028B3CDE600C63AD5 /* JavaScriptCore.framework */; };
 		867B7CF328B3CE0F00C63AD5 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867B7CF228B3CE0F00C63AD5 /* GameController.framework */; };
+		86A2B79128B48A73003C80D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A2B79028B48A73003C80D4 /* Images.xcassets */; };
 		B77175921DFC1A8C00410C8D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B77175911DFC1A8C00410C8D /* logo.png */; };
 		B77175981DFC49E000410C8D /* imageHomeScene in Resources */ = {isa = PBXBuildFile; fileRef = B77175971DFC49E000410C8D /* imageHomeScene */; };
 		B7F5F9881DFC4A360044E678 /* imageLevelScene in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F9871DFC4A360044E678 /* imageLevelScene */; };
@@ -254,6 +255,7 @@
 		867B7CE428B3CD5A00C63AD5 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
 		867B7CF028B3CDE600C63AD5 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		867B7CF228B3CE0F00C63AD5 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
+		86A2B79028B48A73003C80D4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SlideUnlockPuzzle/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		B75930B81DECE5D70094B2F9 /* GameDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDefine.h; sourceTree = "<group>"; };
 		B77175911DFC1A8C00410C8D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		B77175971DFC49E000410C8D /* imageHomeScene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = imageHomeScene; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				86A2B79028B48A73003C80D4 /* Images.xcassets */,
 				7FB1EF4C1E7B02B3003D3F04 /* sound */,
 				B77175911DFC1A8C00410C8D /* logo.png */,
 				7F08C99E1E6FDDBD00F4D11D /* imagePopUp-Pause */,
@@ -701,6 +704,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				867B7CE928B3CD5A00C63AD5 /* GoogleUtilities-LICENSE in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				86A2B79128B48A73003C80D4 /* Images.xcassets in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				7F08C9991E6FC92D00F4D11D /* iconGame in Resources */,
 				B7F5F98A1DFC4A6F0044E678 /* data in Resources */,
@@ -769,6 +773,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
@@ -822,6 +827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
