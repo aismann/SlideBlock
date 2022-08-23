@@ -13,7 +13,7 @@
 @interface AdmobIOS: NSObject
 @property (nonatomic, strong) NSString* bannerId;
 @property (nonatomic, strong) NSString* interstitialId;
-@property(nonatomic,assign) bool isShowAd;
+@property(nonatomic,assign) bool isShowingBanner;
 
 + (AdmobIOS*)sharedAdmob;
 
@@ -23,6 +23,7 @@
 - (void)loadInterstitial;
 - (void)showInterstitial;
 
+-(BOOL)isBannerAvailable;
 @end
 
 #endif /* AdmobIOS_h */

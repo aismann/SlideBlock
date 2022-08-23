@@ -53,6 +53,7 @@ void GameScene::update(float dt) {
     }
     lbTimeGame->setString(bufferTimeGame);
   }
+  this->updateFooterUI(AdmobManager::getInstance()->isBannerAvailable());
 }
 
 void GameScene::initUpdateUI() {
@@ -92,8 +93,20 @@ void GameScene::initUpdateUI() {
   this->addChild(gameBoard,100);
   //  gameBoard->printGameBoard();
   
-  createHeaderGame();
-  createFooterGame();
+  createHeaderUI();
+  createFooterUI();
+  
+  /// Create game board background
+  if(gameBoard->getGameBoardWinMatrixValue().y == 2 ) {
+    Sprite* bgThumbGameBoard = Sprite::create("bg_ingame2.png");
+    bgThumbGameBoard->setPosition(Vec2(winSize.width/2 + 28, winSize.height/2 - 44));
+    this->addChild(bgThumbGameBoard,5);
+  }
+  if(gameBoard->getGameBoardWinMatrixValue().y == 3) {
+    Sprite* bgThumbGameBoard = Sprite::create("bg_ingame3.png");
+    bgThumbGameBoard->setPosition(Vec2(winSize.width/2 + 28, winSize.height/2 - 44));
+    this->addChild(bgThumbGameBoard,5);
+  }
   
   /*Add Event*/
   auto lister = EventListenerTouchOneByOne::create();
@@ -103,11 +116,10 @@ void GameScene::initUpdateUI() {
   lister->onTouchEnded = CC_CALLBACK_2(GameScene::handleTouchEnd, this);
   Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(lister, this);
   this->scheduleUpdate();
-  
   AdmobManager::getInstance()->showBanner(AdmobPosition::BottomCenter);
 }
 
-void GameScene::createHeaderGame() {
+void GameScene::createHeaderUI() {
   Sprite* spBgHeader = Sprite::create("box_time.png");
   spBgHeader->setPosition(Vec2(winSize.width/2, winSize.height - spBgHeader->getContentSize().height/2));
   this->addChild(spBgHeader,2);
@@ -175,16 +187,13 @@ void GameScene::createHeaderGame() {
   this->addChild(lbTimeGame,4);
 }
 
-
-void GameScene::createFooterGame() {
+void GameScene::createFooterUI() {
   /*Button Back game*/
-  ui::Button* btnBackGame = ui::Button::create("backscene_normal.png",
-                                               "backscene_pressed.png","",
-                                               ui::Widget::TextureResType::LOCAL);
-  
-  ///Noted: because Admod height = 32px  ===> btnBackGame will be move to 40.0
+  btnBackGame = ui::Button::create("backscene_normal.png",
+                                   "backscene_pressed.png","",
+                                   ui::Widget::TextureResType::LOCAL);
   btnBackGame->setPosition(Vec2(btnBackGame->getContentSize().height/2,
-                                btnBackGame->getContentSize().height/2 + 40.0));
+                                btnBackGame->getContentSize().height/2));
   btnBackGame->setTag(TAG_BTN_BACK_GAMESCENE);
   btnBackGame->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   this->addChild(btnBackGame,100);
@@ -226,23 +235,21 @@ void GameScene::createFooterGame() {
   btnNextSlot->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   this->addChild(btnNextSlot,100);
   
-  ui::Button* btnSuggestGame = ui::Button::create("goiy_normal.png","goiy_pressed.png","",ui::Widget::TextureResType::LOCAL);
+  btnSuggestGame = ui::Button::create("goiy_normal.png","goiy_pressed.png","",ui::Widget::TextureResType::LOCAL);
   btnSuggestGame->setTag(TAG_BTN_SUGGEST_GAME);
   btnSuggestGame->setPosition(Vec2(winSize.width - btnSuggestGame->getContentSize().width/2, btnBackGame->getPositionY()));
   btnSuggestGame->addClickEventListener(CC_CALLBACK_1(GameScene::buttonClickGameScene,this));
   btnSuggestGame->setVisible(false);
   this->addChild(btnSuggestGame,100);
-  
-  if(gameBoard->getGameBoardWinMatrixValue().y == 2 ) {
-    Sprite* bgThumbGameBoard = Sprite::create("bg_ingame2.png");
-    bgThumbGameBoard->setPosition(Vec2(winSize.width/2 + 28, winSize.height/2 - 44));
-    this->addChild(bgThumbGameBoard,5);
-  }
-  if(gameBoard->getGameBoardWinMatrixValue().y == 3) {
-    Sprite* bgThumbGameBoard = Sprite::create("bg_ingame3.png");
-    bgThumbGameBoard->setPosition(Vec2(winSize.width/2 + 28, winSize.height/2 - 44));
-    this->addChild(bgThumbGameBoard,5);
-  }
+}
+
+void GameScene::updateFooterUI(bool isBannerAvailable) {
+  ///Noted: because Admod height = 32px  ===> btnBackGame will be move to 40.0
+  float positionYBackButton = isBannerAvailable ? btnBackGame->getContentSize().height/2 + 40.0 : btnBackGame->getContentSize().height/2 ;
+  btnBackGame->setPositionY(positionYBackButton);
+  btnBackSlot->setPositionY(positionYBackButton);
+  btnNextSlot->setPositionY(positionYBackButton);
+  btnSuggestGame->setPositionY(positionYBackButton);
 }
 
 void GameScene::buttonClickGameScene(Ref* pSender) {
@@ -435,7 +442,7 @@ void GameScene::handleTouchEnd(Touch* mTouch, Event* pEvent) {
   
   /// Check game win
   gameBoard->checkWinGame();
-//  gameBoard->printGameBoard();
+  //  gameBoard->printGameBoard();
   
   touchObject = NULL;
   previousHeadMatrix = Vec2(-1, -1);

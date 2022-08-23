@@ -20,17 +20,6 @@ class GameScene : public Layer, DelegateNotification {
 private:
   Size winSize;
   
-  GameBoard* gameBoard;
-  GameObject* touchObject;
-  Vec2 previousHeadMatrix;
-  Vec2 touchBeginPosition;
-  
-  Label* lbLevelGame;
-  Label* lbMoveGame;
-  Label* lbTimeGame;
-  ui::Button* btnBackSlot;
-  ui::Button* btnNextSlot;
-  
   int level;
   int status;
   int styleGame;
@@ -38,6 +27,19 @@ private:
   int timeMinutes;
   int hightLevel;
   float timeSecondRunGame;
+  
+  Label* lbLevelGame;
+  Label* lbMoveGame;
+  Label* lbTimeGame;
+  ui::Button* btnBackGame;
+  ui::Button* btnSuggestGame;
+  ui::Button* btnBackSlot;
+  ui::Button* btnNextSlot;
+  
+  GameBoard* gameBoard;
+  GameObject* touchObject;
+  Vec2 previousHeadMatrix;
+  Vec2 touchBeginPosition;
   
 public:
   GameScene();
@@ -52,8 +54,9 @@ public:
   void handleTouchEnd(Touch* mTouch, Event* pEvent);
   void updateGameBoardWhenTouchEnd(GameObject* gameObject, Vec2 newPosition);
   
-  void createHeaderGame();
-  void createFooterGame();
+  void createHeaderUI();
+  void createFooterUI();
+  void updateFooterUI(bool isBannerAvailable);
   
   void buttonClickGameScene(Ref* pSender);
   void createPopUpPause();

@@ -92,34 +92,22 @@ typedef enum : NSUInteger {
   }
 }
 
+-(BOOL)isBannerAvailable {
+  return self.isShowingBanner;
+}
+
 /// MARK: GADFullScreenContentDelegate
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
   NSLog(@"Ad did fail to present full screen content.");
 }
 
-- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-  NSLog(@"Ad will present full screen content.");
-}
-
-- (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-  NSLog(@"Ad did dismiss full screen content.");
-}
-
 /// MARK: GADBannerViewDelegate
 - (void)bannerViewDidReceiveAd:(nonnull GADBannerView *)bannerView {
-  NSLog(@"bannerViewDidReceiveAd");
+  self.isShowingBanner = true;
 }
 
 - (void)bannerView:(nonnull GADBannerView *)bannerView didFailToReceiveAdWithError:(nonnull NSError *)error {
-  NSLog(@"didFailToReceiveAdWithError: %@", [error localizedDescription]);
-}
-
-- (void)bannerViewDidRecordImpression:(nonnull GADBannerView *)bannerView {
-  NSLog(@"bannerViewDidRecordImpression");
-}
-
-- (void)bannerViewDidRecordClick:(nonnull GADBannerView *)bannerView {
-  NSLog(@"bannerViewDidRecordClick");
+  self.isShowingBanner = false;
 }
 
 /// MARK: Helper method

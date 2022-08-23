@@ -36,3 +36,7 @@ void AdmobIOSWrapper::loadInterstitial() {
 void AdmobIOSWrapper::showInterstitial() {
   [[AdmobIOS sharedAdmob] showInterstitial];
 }
+
+bool AdmobIOSWrapper::isBannerAvailable() {
+  return [[AdmobIOS sharedAdmob] isBannerAvailable];
+}

@@ -30,9 +30,11 @@ public:
   
   void showBanner(AdmobPosition position);
   void hideBanner();
-
+  
   void loadInterstitial();
   void showInterstitial();
+
+  bool isBannerAvailable();
 };
 
 #endif /* AdmobManager_h */

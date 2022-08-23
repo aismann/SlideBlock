@@ -47,3 +47,9 @@ void AdmobManager::showInterstitial() {
   AdmobIOSWrapper::getInstance()->showInterstitial();
 #endif
 }
+bool AdmobManager::isBannerAvailable() {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+  return AdmobIOSWrapper::getInstance()->isBannerAvailable();
+#endif
+}
+
